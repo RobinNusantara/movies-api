@@ -11,7 +11,13 @@ import { App } from "App";
 
     const container = new Container();
     const app = new App(container, server.port);
-    Database.getInstance();
+    const database = Database.getInstance();
 
-    app.start();
+    database
+        .connect()
+        .then(() => {
+            app.start();
+            console.log("Connected to Database");
+        })
+        .catch((err) => console.log("Connection Error ", err));
 })();

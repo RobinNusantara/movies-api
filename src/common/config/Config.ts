@@ -9,8 +9,8 @@ export const config = {
     database: {
         username: String(process.env.DB_USERNAME),
         password: String(process.env.DB_PASSWORD),
-        host: String(process.env.DB_HOST),
-        port: Number(process.env.DB_PORT) || 5432,
+        host: String(process.env.DB_HOSTNAME),
+        port: Number(process.env.DB_PORT) || 3306,
     },
     jwt: {
         signature: String(process.env.JWT_SIGNATURE) || "JWT_SIGNATURE",
