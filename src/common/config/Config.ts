@@ -6,6 +6,12 @@ export const config = {
     server: {
         port: Number(process.env.PORT) || 5000,
     },
+    database: {
+        username: String(process.env.DB_USERNAME),
+        password: String(process.env.DB_PASSWORD),
+        host: String(process.env.DB_HOST),
+        port: Number(process.env.DB_PORT) || 5432,
+    },
     jwt: {
         signature: String(process.env.JWT_SIGNATURE) || "JWT_SIGNATURE",
     },
