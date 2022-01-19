@@ -9,4 +9,8 @@ export const config = {
     jwt: {
         signature: String(process.env.JWT_SIGNATURE) || "JWT_SIGNATURE",
     },
+    api: {
+        url: String(process.env.MOVIE_API_URL),
+        key: String(process.env.MOVIE_API_KEY),
+    },
 };
