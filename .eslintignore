@@ -1,0 +1,8 @@
+# Dependencies
+src/@types
+
+# Output
+dist
+
+# Webpack
+webpack.config.js
