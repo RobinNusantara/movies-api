@@ -10,7 +10,7 @@ import {
 import { UserModel } from "@apps/models/UserModel";
 
 interface IFavoriteMovieModel {
-    id: number;
+    id?: number;
     userId: number;
     title: string;
     createdAt?: Date;
@@ -28,7 +28,7 @@ export class FavoriteMovieModel
         autoIncrement: true,
         allowNull: false,
     })
-    id: number;
+    id?: number;
 
     @ForeignKey(() => UserModel)
     @Column({

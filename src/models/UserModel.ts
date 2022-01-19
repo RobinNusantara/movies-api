@@ -10,7 +10,7 @@ import {
 import { FavoriteMovieModel } from "@apps/models/FavoriteMovieModel";
 
 interface IUserModel {
-    id: number;
+    id?: number;
     name: string;
     password: string;
     createdAt?: Date;
@@ -29,7 +29,7 @@ export class UserModel
         autoIncrement: true,
         allowNull: false,
     })
-    id: number;
+    id?: number;
 
     @Column({
         type: DataType.STRING,
