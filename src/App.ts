@@ -6,12 +6,13 @@ import "reflect-metadata";
 import cors from "cors";
 import { Application, json, urlencoded } from "express";
 import { Server } from "http";
-import { Container } from "inversify";
+import { Container, ContainerModule } from "inversify";
 import { InversifyExpressServer } from "inversify-express-utils";
 import morgan from "morgan";
 
 // Import Applications
 import "@apps/controllers/MovieController";
+import { ApplicationModule } from "@apps/modules/ApplicationModule";
 import { CreateError } from "@apps/middlewares/CreateErrorMiddleware";
 
 export class App {
@@ -21,7 +22,9 @@ export class App {
     constructor(
         private readonly _container: Container,
         private readonly _port: number,
-    ) {}
+    ) {
+        this.containers();
+    }
 
     public start(): Server {
         const server = new InversifyExpressServer(this._container, null, {
@@ -35,6 +38,14 @@ export class App {
             .listen(this._port, this._host, () => {
                 console.log(`Server running on port ${this._port}`);
             });
+    }
+
+    private containers(): void {
+        const applications = new ContainerModule((bind) => {
+            new ApplicationModule(bind);
+        });
+
+        return this._container.load(applications);
     }
 
     private middlewares(app: Application): void {

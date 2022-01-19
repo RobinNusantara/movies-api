@@ -5,7 +5,6 @@ export abstract class HttpClient {
     protected readonly _axiosInstance: AxiosInstance;
 
     constructor(baseUrl: string, headers?: object) {
-        console.log(baseUrl);
         this._axiosInstance = axios.create({
             baseURL: baseUrl,
             headers: { ...headers },
