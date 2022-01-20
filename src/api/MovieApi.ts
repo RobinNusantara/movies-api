@@ -29,4 +29,16 @@ export class MovieApi extends HttpClient {
 
         return movies.map((movie) => MovieDto.fromOmdbMovie(movie));
     };
+
+    public getMovieById = async (id: string): Promise<MovieDto> => {
+        const { data } = await this._axiosInstance.get("", {
+            params: {
+                [OmdbParam.Id]: id,
+            },
+        });
+
+        const movie = data as OmdbMovieDto;
+
+        return MovieDto.fromOmdbMovie(movie);
+    };
 }
