@@ -17,13 +17,13 @@ interface IFavoriteMovieModel {
     updatedAt?: Date;
 }
 
-@Table({ tableName: "favorite_movies", timestamps: false })
+@Table({ tableName: "favorite_movies", timestamps: true })
 export class FavoriteMovieModel
     extends Model<IFavoriteMovieModel, IFavoriteMovieModel>
     implements IFavoriteMovieModel
 {
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -33,7 +33,7 @@ export class FavoriteMovieModel
     @ForeignKey(() => UserModel)
     @Column({
         field: "user_id",
-        type: DataType.INTEGER,
+        type: DataType.BIGINT,
         allowNull: false,
     })
     userId: number;

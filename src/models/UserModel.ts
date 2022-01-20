@@ -18,13 +18,13 @@ interface IUserModel {
     favoriteMovies?: Array<FavoriteMovieModel>;
 }
 
-@Table({ tableName: "users", timestamps: false })
+@Table({ tableName: "users", timestamps: true })
 export class UserModel
     extends Model<IUserModel, IUserModel>
     implements IUserModel
 {
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
