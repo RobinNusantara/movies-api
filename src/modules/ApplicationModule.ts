@@ -3,13 +3,14 @@ import { interfaces } from "inversify";
 
 // Repositories
 import { UserRepository } from "@apps/repositories/UserRepository";
+import { MovieRepository } from "@apps/repositories/MovieRepository";
 
 // Services
 import { UserService } from "@apps/services/UserService";
 import { MovieService } from "@apps/services/MovieService";
 
 export class ApplicationModule {
-    private readonly _repositories = [UserRepository];
+    private readonly _repositories = [UserRepository, MovieRepository];
     private readonly _services = [UserService, MovieService];
 
     constructor(private readonly _bind: interfaces.Bind) {

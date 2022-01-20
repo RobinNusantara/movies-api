@@ -12,7 +12,10 @@ import { UserModel } from "@apps/models/UserModel";
 interface IFavoriteMovieModel {
     id?: number;
     userId: number;
+    imdbId: string;
     title: string;
+    year: string;
+    poster: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -42,7 +45,25 @@ export class FavoriteMovieModel
         type: DataType.STRING,
         allowNull: false,
     })
+    imdbId: string;
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
     title: string;
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    year: string;
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    poster: string;
 
     @Column({
         field: "created_at",

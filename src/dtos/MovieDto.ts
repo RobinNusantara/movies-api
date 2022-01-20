@@ -1,5 +1,11 @@
+// Import Dependencies
+import { IsNotEmpty, IsString } from "class-validator";
+
+// Import Applications
+import { FavoriteMovieModel } from "@apps/models/FavoriteMovieModel";
+
 export class OmdbMovieDto {
-    imdbId: string;
+    imdbID: string;
 
     Title: string;
 
@@ -17,17 +23,32 @@ export class MovieDto {
 
     year: string;
 
-    type: string;
+    type?: string;
 
     poster: string;
 
     public static fromOmdbMovie(data: OmdbMovieDto): MovieDto {
         return {
-            imdbId: data.imdbId,
+            imdbId: data.imdbID,
             title: data.Title,
             type: data.Type,
             poster: data.Poster,
             year: data.Year,
         };
     }
+
+    public static fromMovieModel(data: FavoriteMovieModel): MovieDto {
+        return {
+            imdbId: data.imdbId,
+            title: data.title,
+            poster: data.poster,
+            year: data.year,
+        };
+    }
+}
+
+export class InsertFavoriteMovieDto {
+    @IsString()
+    @IsNotEmpty()
+    imdbId: string;
 }
