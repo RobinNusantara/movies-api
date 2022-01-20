@@ -1,4 +1,5 @@
 export enum OmdbParam {
+    Id = "i",
     Title = "s",
     Type = "type",
     Year = "y",
