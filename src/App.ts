@@ -11,6 +11,7 @@ import { InversifyExpressServer } from "inversify-express-utils";
 import morgan from "morgan";
 
 // Import Applications
+import "@apps/controllers/AuthController";
 import "@apps/controllers/MovieController";
 import { ApplicationModule } from "@apps/modules/ApplicationModule";
 import { CreateError } from "@apps/middlewares/CreateErrorMiddleware";

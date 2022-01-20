@@ -11,3 +11,13 @@ export class SignUpDto {
     @MaxLength(16)
     password: string;
 }
+
+export class SignInDto {
+    @IsString()
+    @IsNotEmpty()
+    username: string;
+
+    @IsString()
+    @IsNotEmpty()
+    password: string;
+}
