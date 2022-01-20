@@ -11,7 +11,7 @@ dotenv();
 
 export class Database {
     private static _instance?: Database;
-    public _sequelize: Sequelize;
+    private _sequelize: Sequelize;
 
     public static getInstance(): Database {
         if (!this._instance) {
