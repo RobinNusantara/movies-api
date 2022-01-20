@@ -16,8 +16,8 @@ import { App } from "App";
     database
         .connect()
         .then(() => {
-            app.start();
             console.log("Connected to Database");
+            app.start();
         })
         .catch((err) => console.log("Connection Error ", err));
 })();
