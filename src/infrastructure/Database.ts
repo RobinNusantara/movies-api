@@ -26,6 +26,7 @@ export class Database {
             dialect: "mysql",
             database: "db_movies_apps",
             ...config.database,
+            logging: false,
         });
 
         this._sequelize.addModels([UserModel, FavoriteMovieModel]);

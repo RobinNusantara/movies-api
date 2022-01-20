@@ -9,6 +9,7 @@ import { Server } from "http";
 import { Container, ContainerModule } from "inversify";
 import { InversifyExpressServer } from "inversify-express-utils";
 import morgan from "morgan";
+import pino from "express-pino-logger";
 
 // Import Applications
 import "@apps/controllers/AuthController";
@@ -53,6 +54,16 @@ export class App {
         app.use(json());
         app.use(urlencoded({ extended: false }));
         app.use(morgan("dev"));
+        app.use(
+            pino({
+                transport: {
+                    target: "pino-pretty",
+                    options: {
+                        colorize: true,
+                    },
+                },
+            }),
+        );
         app.use(cors());
     }
 
